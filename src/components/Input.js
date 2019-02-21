@@ -26,19 +26,21 @@ const styles = {
     paddingLeft: 5,
     fontSize: 18,
     lineHeight: 23,
-    flex: 1
+    flex: 0.6,
+    borderWidth: 2,
+    borderRadius: 20,
+    marginRight: 25
   },
   labelStyle:{
     fontSize: 18,
     paddingLeft: 20,
-    flex: 1,
+    flex: 0.4,
+    fontWeight: 'bold'
   },
   containerStyle:{
-    height:20,
-    flex:1,
+    height:80,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'red',
     marginTop: 20
   }
 }
