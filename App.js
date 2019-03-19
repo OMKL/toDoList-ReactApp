@@ -1,18 +1,36 @@
 
 import React, {Component} from 'react';
-import { StyleSheet, Text,  View} from 'react-native';
-import SignInScreen from './src/screens/SignInScreen';
-import SignUpScreen from './src/screens/SignUpScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
+import { StyleSheet, View} from 'react-native';
+import firebase from 'firebase';
+import Router from './src/Router';
+import ReduxThunk from 'redux-thunk';
+import  { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './src/reducers';
+
 
 export default class App extends Component {
+
+
+  componentWillMount() {
+
+    firebase.initializeApp({
+      apiKey: "AIzaSyD0Ewv74EG3sofgQVN2XsVIVPEMEm0HSVw",
+      authDomain: "todolist-app-689fc.firebaseapp.com",
+      databaseURL: "https://todolist-app-689fc.firebaseio.com",
+      projectId: "todolist-app-689fc",
+      storageBucket: "todolist-app-689fc.appspot.com",
+      messagingSenderId: "192128780052"
+    });
+  }
+
   render() {
     return (
-      
+    <Provider store = {createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
     <View style={styles.container}>
-      <SettingsScreen />
+      <Router/>
     </View>
-
+    </Provider>
     );
   }
 }
