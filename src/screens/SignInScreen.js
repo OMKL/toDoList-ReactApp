@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, LayoutAnimation , View, Image } from 'react-native';
 import { Input } from '../components/Input';
-import { Button} from 'react-native-elements';
+import { Button, Icon} from 'react-native-elements';
+import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux'; 
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 
-export default class SignInScreen extends Component {
+
+class SignInScreen extends Component {
     constructor(props) {
         super(props)
     }
@@ -12,8 +16,20 @@ export default class SignInScreen extends Component {
     componentWillMount(){
         LayoutAnimation.spring();
     }
-    
+
+    onEmailChange(text) {
+        this.props.emailChanged(text);
+    }
+    onPasswordChange(text){
+        this.props.passwordChanged(text);
+    }
+
+    onButtonPress(){
+        const {email, password} = this.props;
+        this.props.loginUser({email, password});
+    }
     render() {
+        
         return (
 
             <View style={styles.mainContainer}>
@@ -22,7 +38,8 @@ export default class SignInScreen extends Component {
                         style={{ width: 100 }}
                         title='Sign Up'
                         type= 'outline'
-                        raised />
+                        raised
+                        onPress={() => Actions.SignUp()} />
                 </View>
 
                 <View style={styles.headerStyle}>
@@ -35,26 +52,47 @@ export default class SignInScreen extends Component {
 
                 <View style = {{ flex: 0.5, alignItems: 'center'}}>
                     <Input
+                        value = {this.props.email}
                         label='Email:'
-                        placeholder='@gmail.com' />
+                        placeholder='@gmail.com'
+                        onChangeText = {this.onEmailChange.bind(this)} />
                     <Input
+                        value= {this.props.password}
                         label='Password:'
                         placeholder='***********'
-                        secureTextEntry />
+                        secureTextEntry
+                        onChangeText = {this.onPasswordChange.bind(this)} />
                     
                     <Button
-                        style={{ width: 300, marginTop: 30 }}
-                        title='Sign In'
-                        
-
-                         />
+                        onPress = {this.onButtonPress.bind(this)}
+                        iconRight
+                        style={{ width: 300, marginTop: 19 }}
+                        icon={
+                            <Icon
+                                name='sign-in'
+                                type='font-awesome'
+                                size={30}
+                            />
+                        }
+                        title= "   Sign In   "
+                    />
                 </View>
-
+                    {this.props.error ? <Text>{this.props.error}</Text> : null}
             </View>
 
         )
     }
 }
+
+const mapStateToProps = state =>{
+    return {
+        email: state.auth.email,
+        password: state.auth.password,
+        error: state.auth.error
+    };
+};
+export default connect (mapStateToProps, { emailChanged, passwordChanged, loginUser }) (SignInScreen);
+    
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
@@ -72,7 +110,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 5,
         borderBottomEndRadius: 30,
         borderBottomStartRadius: 30
-        //backgroundColor: 'red'
        
     },
 
