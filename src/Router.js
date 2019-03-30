@@ -2,34 +2,40 @@ import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import HomeScreen from './screens/HomeScreen'
 
 
-const RouterComponent = ( ) => {
+const RouterComponent = () => {
 
-    return( 
+    return (
         <Router>
             <Scene key='root' hideNavBar >
-                <Scene key= 'auth'>
+                <Scene key='auth'>
 
-                    <Scene 
-                    hideNavBar
-                    key ='LogIn' 
-                    component = {SignInScreen}
-                    title = 'Log In'
-                    initial/>
+                    <Scene
+                        hideNavBar
+                        key='LogIn'
+                        component={SignInScreen}
+                        title='Log In'
+                        initial />
 
-                    <Scene 
-                    key ='SignUp' 
-                    component = {SignUpScreen}
-                    back
-                    
-                    />   
+                    <Scene
+                        key='SignUp'
+                        component={SignUpScreen}
+                        back
+
+                    />
 
                 </Scene>
+                <Scene
+                    hideNavBar
+                    key='Home'
+                    component={HomeScreen} />
+
 
             </Scene>
-            
-        </Router> 
+
+        </Router>
     );
 };
 
