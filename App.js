@@ -1,12 +1,13 @@
 
 import React, {Component} from 'react';
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView} from 'react-native';
 import firebase from 'firebase';
 import Router from './src/Router';
 import ReduxThunk from 'redux-thunk';
 import  { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './src/reducers';
+
 
 
 export default class App extends Component {
@@ -27,9 +28,9 @@ export default class App extends Component {
   render() {
     return (
     <Provider store = {createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
-    <View style={styles.container}>
-      <Router/>
-    </View>
+    <KeyboardAvoidingView onStartShouldSetResponder = {() => Keyboard.dismiss() } style={styles.container} behavior="padding" enabled>
+    <Router/>
+    </KeyboardAvoidingView>
     </Provider>
     );
   }

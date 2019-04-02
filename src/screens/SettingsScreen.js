@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, LayoutAnimation, View, Image } from 'react-native';
-import { Input } from '../components/Input';
+import { Text, StyleSheet, LayoutAnimation, View} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Icon } from 'react-native-elements'
+import { connect } from 'react-redux'; 
+import { logOut } from '../actions';
 
 
-export default class SettingsScreen extends Component {
+class SettingsScreen extends Component {
     constructor(props) {
         super(props)
     }
@@ -66,6 +67,7 @@ export default class SettingsScreen extends Component {
                             />
                         }
                         title="  Sign Out"
+                        onPress = {()=> this.props.logOut()}
                     />
 
                 </View>
@@ -75,13 +77,15 @@ export default class SettingsScreen extends Component {
         )
     }
 }
+export default connect (null, { logOut }) (SettingsScreen);
+
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
         backgroundColor: '#F5FCFF',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        marginTop: 180,
+        paddingTop: 40,
 
     },
 
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomEndRadius: 1000,
         borderBottomStartRadius: 1000,
-        //backgroundColor: 'red'
+        
 
     },
 

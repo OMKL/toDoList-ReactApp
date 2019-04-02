@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, LayoutAnimation , View, Image } from 'react-native';
+import { Text, StyleSheet, LayoutAnimation, View, Image } from 'react-native';
 import { Input } from '../components/Input';
 import { Button, Icon} from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
@@ -31,8 +31,8 @@ class SignInScreen extends Component {
     render() {
         
         return (
-
-            <View style={styles.mainContainer}>
+           
+            <View  style={styles.mainContainer}>
                 <View style={{ alignItems: 'flex-end', flex:0.1, margin: 12, justifyContent:'flex-start' }}>
                     <Button
                         style={{ width: 100 }}
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 5,
         borderBottomEndRadius: 30,
         borderBottomStartRadius: 30
-       
     },
 
 });
