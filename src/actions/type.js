@@ -5,3 +5,4 @@ export const LOGIN_USER_FAIL = 'login_user_fail'
 
 export const USER_SUCCESSFULLY_SIGNEDUP = 'user_successfully_signedup';
 export const USER_SINGUP_FAIL = 'user_signup_fail';
+export const SIGN_OUT = 'sign_out';
