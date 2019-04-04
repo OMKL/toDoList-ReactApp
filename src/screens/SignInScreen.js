@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, LayoutAnimation, View, Image } from 'react-native';
+import { Text, StyleSheet, LayoutAnimation, ActivityIndicator, View, Image } from 'react-native';
 import { Input } from '../components/Input';
 import { Button, Icon} from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
