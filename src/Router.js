@@ -21,7 +21,7 @@ const RouterComponent = () => {
                     <Scene
                         hideNavBar
                         drawerLockMode='locked-closed' 
-                        initial
+                        //initial
                         key='LogIn'
                         component={SignInScreen}
                         title='Log In'
@@ -41,6 +41,7 @@ const RouterComponent = () => {
                     title='' />
 
                 <Scene hideNavBar
+                    initial
                     key='Home'
                     tabs={true}>
                 <Scene  key='tab1' title='IN PROGRESS' hideNavBar  component={HomeScreen} />
