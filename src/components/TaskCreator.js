@@ -9,7 +9,7 @@ export default class TaskCreator1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      progessValue: '',
+      progessValue: 'Started',
     };
 
 
@@ -76,10 +76,22 @@ export default class TaskCreator1 extends Component {
 
                 <View style={{ marginLeft: 10, marginTop: 5, flex: 0.5 }}>
                   <Text style={{ fontSize: 20,color:'#6D6E70', fontWeight: 'bold' }}>Status:</Text>
+                  <ModalSelector
+                 
+                  initValue={'Select'}
+                  ref={selector => { this.selector = selector; }}
+                  data={StatusData}
+                  keyExtractor={item => item.id}
+                  labelExtractor={item => item.name}
+                  onChange={(option) => { this.setState({ progessValue: option.label }) }}>
+
                   <TextInput
+                    editable={false}
                     style={{ fontSize: 18, marginTop: 4, marginLeft: 15, borderBottomWidth: 2, marginRight: 25 }}
                     placeholder={'Select Status'}
+                    value={this.state.progessValue}
                   />
+                </ModalSelector>
                 </View>
               </View>
 
