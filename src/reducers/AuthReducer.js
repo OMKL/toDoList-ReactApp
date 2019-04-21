@@ -5,7 +5,7 @@ const INITIAL_STATE = {email:'',
                        password:'',
                        loading:false,
                        user: null,
-                       error:''
+                       error:'',
                         };
 
 export default (state = INITIAL_STATE, action) => {

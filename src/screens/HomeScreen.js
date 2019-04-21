@@ -3,10 +3,16 @@ import { Text, StyleSheet, Keyboard, LayoutAnimation, View } from 'react-native'
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
+import TaskCreator from '../components/TaskCreator';
+
 
 
 
 class HomeScreen extends Component {
+
+    state = {
+        showModal: false,
+    }
     constructor(props) {
         super(props)
     }
@@ -26,7 +32,7 @@ class HomeScreen extends Component {
                         icon={
                             <Icon
                                 name='cog'
-                                size={30}
+                                size={24}
                                 color="white"
                             />
                         }
@@ -36,11 +42,12 @@ class HomeScreen extends Component {
                 </View>
                 <View style={styles.list}>
                     <Button
+                        onPress = {() => this.setState({showModal: !this.state.showModal})}
                         type='clear'
                         icon={
                             <Icon
                                 name='plus-circle'
-                                size={50}
+                                size={30}
                                 color="white"
                             />
                         }
@@ -48,7 +55,10 @@ class HomeScreen extends Component {
                     />
 
                 </View>
-
+                <TaskCreator
+                visible ={this.state.showModal}
+                closeModal = {() => this.setState({showModal: !this.state.showModal})}
+                />
             </View>
 
         )
