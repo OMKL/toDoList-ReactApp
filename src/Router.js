@@ -1,9 +1,10 @@
 import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import {Text} from 'react-native';
+import { Scene, Router, Actions, Drawer } from 'react-native-router-flux';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
-import HomeScreen from './screens/HomeScreen'
-import { Icon } from 'react-native-elements'
+import HomeScreen from './screens/HomeScreen';
+import { Icon } from 'react-native-elements';
 import SettingsScreen from './screens/SettingsScreen';
 
 
@@ -15,38 +16,56 @@ const RouterComponent = () => {
     return (
         <Router>
             <Scene key='root' gesturesEnabled={false} hideNavBar >
-            
+
                 <Scene key='auth'>
 
                     <Scene
                         hideNavBar
-                        drawerLockMode='locked-closed' 
                         initial
                         key='LogIn'
                         component={SignInScreen}
                         title='Log In'
-                        />
-
+                    />
+                    
                     <Scene
+                        
+                        back
                         key='SignUp'
                         component={SignUpScreen}
-                        back
+
                     />
+                    <Scene
+                        hideNavBar={false}
+                        key='Settings'
+                        component={SettingsScreen}
+                        title='' />
+                    <Drawer
+                        hideNavBar
+                        key="drawerMenu"
+                        contentComponent={SettingsScreen}
+                        drawerWidth={300}
+                        drawerIcon= {<Icon
+                           
+                            size={30}
+                            name='cog'
+                            type='font-awesome'
+                            color='black'
+                             />
+                            }
+    
+                        drawerPosition="right"
+                    >
+                        <Scene
+                            
+                            key='Home'
+                            tabs={true}>
+                            <Scene  key='tab1' title='IN PROGRESS' component={HomeScreen} />
 
+                            <Scene key='tab2' title='DONE' component={HomeScreen} />
+                        </Scene>
+                    </Drawer>
                 </Scene>
-                <Scene
-                    hideNavBar = {false}
-                    key='Settings'
-                    component={SettingsScreen}
-                    title='' />
 
-                <Scene hideNavBar
-                    key='Home'
-                    tabs={true}>
-                <Scene  key='tab1' title='IN PROGRESS' hideNavBar  component={HomeScreen} />
-                <Scene key='tab2' title='DONE' hideNavBar  component={HomeScreen} />
-               
-                </Scene>
             </Scene>
 
         </Router>

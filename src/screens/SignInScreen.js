@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, LayoutAnimation, ActivityIndicator, View, Image } from 'react-native';
+import { Text, StyleSheet, LayoutAnimation, AsyncStorage, View, Image } from 'react-native';
 import { Input } from '../components/Input';
 import { Button, Icon} from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux'; 
 import { emailChanged, passwordChanged, loginUser } from '../actions';
+
 
 
 
@@ -15,6 +16,17 @@ class SignInScreen extends Component {
 
     componentWillMount(){
         LayoutAnimation.spring();
+    
+    }
+
+    componentDidMount(){
+
+        AsyncStorage.getItem('Authentication').then(result => {
+            if(result === 'true'){
+                  Actions.Home();  
+            } else
+                return null;
+        });
     }
 
     onEmailChange(text) {
@@ -26,12 +38,13 @@ class SignInScreen extends Component {
 
     onButtonPress(){
         const {email, password} = this.props;
-        this.props.loginUser({email, password});
+        this.props.loginUser({email, password})
+            AsyncStorage.setItem('Authentication', 'true');
+       
     }
     render() {
         
         return (
-           
             <View  style={styles.mainContainer}>
                 <View style={{ alignItems: 'flex-end', flex:0.1, margin: 12, justifyContent:'flex-start' }}>
                     <Button
@@ -99,7 +112,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
         flexDirection: 'column',
         justifyContent: 'center',
-
+        backgroundColor:'transparent'
     },
 
     headerStyle: {
