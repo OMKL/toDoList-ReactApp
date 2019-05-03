@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, LayoutAnimation, View} from 'react-native';
+import { Text, StyleSheet,AsyncStorage, LayoutAnimation, View} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'; 
@@ -67,7 +67,7 @@ class SettingsScreen extends Component {
                             />
                         }
                         title="  Sign Out"
-                        onPress = {()=> this.props.logOut()}
+                        onPress = {()=> { this.props.logOut(); AsyncStorage.setItem('Authentication', 'false')}}
                     />
 
                 </View>

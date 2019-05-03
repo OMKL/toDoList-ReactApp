@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, AsyncStorage,StatusBar, Keyboard, KeyboardAvoidingView} from 'react-native';
 import firebase from 'firebase';
 import Router from './src/Router';
 import ReduxThunk from 'redux-thunk';
@@ -22,10 +22,13 @@ export default class App extends Component {
       projectId: "todolist-app-689fc",
       storageBucket: "todolist-app-689fc.appspot.com",
       messagingSenderId: "192128780052"
-    });
+    });    
   }
 
   render() {
+
+    
+    StatusBar.setBarStyle('light-content', true);
     return (
     <Provider store = {createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
     <KeyboardAvoidingView onStartShouldSetResponder = {() => Keyboard.dismiss() } style={styles.container} behavior="padding" enabled>

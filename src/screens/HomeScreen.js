@@ -4,6 +4,8 @@ import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
 import TaskCreator from '../components/TaskCreator';
+import { AsyncStorage } from 'react-native';
+
 
 
 
@@ -17,36 +19,22 @@ class HomeScreen extends Component {
         super(props)
     }
 
-    componentWillMount() {
-        LayoutAnimation.spring();
-    }
-
     render() {
+
+
 
         return (
 
             <View style={styles.mainContainer}>
-        <View style={styles.settings}>
-                    <Button
-                        type='clear'
-                        icon={
-                            <Icon
-                                name='cog'
-                                size={24}
-                                color="white"
-                            />
-                        }
-                        onPress={() => Actions.Settings()}
-                    />
 
-                </View>
                 <View style={styles.list}>
                     <Button
-                        onPress = {() => this.setState({showModal: !this.state.showModal})}
+                        onPress={() => this.setState({ showModal: !this.state.showModal })}
                         type='clear'
                         icon={
                             <Icon
                                 name='plus-circle'
+                                type='font-awsesome'
                                 size={30}
                                 color="white"
                             />
@@ -56,8 +44,8 @@ class HomeScreen extends Component {
 
                 </View>
                 <TaskCreator
-                visible ={this.state.showModal}
-                closeModal = {() => this.setState({showModal: !this.state.showModal})}
+                    visible={this.state.showModal}
+                    closeModal={() => this.setState({ showModal: !this.state.showModal })}
                 />
             </View>
 
@@ -68,14 +56,14 @@ class HomeScreen extends Component {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
- 
+
     list: {
         flex: 7,
         flexDirection: 'column',
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        
-        
+
+
     },
     mainContainer: {
         flex: 1,
@@ -85,12 +73,6 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         paddingBottom: 40
     },
-    settings:{
-        flex: 0.5,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-end',
-        
-    }
+    
 
 });
