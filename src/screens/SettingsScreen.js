@@ -6,12 +6,16 @@ import { connect } from 'react-redux';
 import { logOut } from '../actions';
 
 
+
 class SettingsScreen extends Component {
     constructor(props) {
         super(props)
     }
 
     componentWillMount() {
+
+        
+
         LayoutAnimation.linear();
     }
 
@@ -67,7 +71,9 @@ class SettingsScreen extends Component {
                             />
                         }
                         title="  Sign Out"
-                        onPress = {()=> { this.props.logOut(); AsyncStorage.setItem('Authentication', 'false')}}
+                        onPress = {()=> { this.props.logOut(); AsyncStorage.setItem('Authentication', 'false')
+                    }}
+
                     />
 
                 </View>

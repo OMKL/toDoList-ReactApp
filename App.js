@@ -10,6 +10,10 @@ import reducers from './src/reducers';
 
 
 
+
+var Datastore = require('react-native-local-mongodb'), 
+  db = new Datastore({ filename: 'authentication', autoload: true });
+ 
 export default class App extends Component {
 
 
@@ -26,7 +30,13 @@ export default class App extends Component {
   }
 
   render() {
+    db.find({}, function (err, docs) {
+      // docs is an array containing documents Mars, Earth, Jupiter
+      console.log(docs[2]);
+      // If no document is found, docs is equal to []
+  });
 
+console.log(db.value);
     
     StatusBar.setBarStyle('light-content', true);
     return (

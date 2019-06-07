@@ -3,6 +3,7 @@ import { Dimensions, Modal, Text, StyleSheet, TextInput, View } from 'react-nati
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ModalSelector from 'react-native-modal-selector';
+import { Avatar } from 'react-native-elements';
 export default class TaskCreator1 extends Component {
 
 
@@ -20,7 +21,16 @@ export default class TaskCreator1 extends Component {
       {
         key: 0,
         label: 'Football',
-        component: <View><Text>Football</Text></View>
+        component: <View>
+          <Avatar
+          source={{
+            uri:
+              'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+          }}
+          size="small"
+          rounded/>
+              <Text>Football</Text>
+              </View>
       },
       {
         key: 1,

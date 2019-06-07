@@ -21,15 +21,21 @@ export const passwordChanged = (text) => {
 export const loginUser = ({email, password}) => {
 
     return(dispatch) => {
+        console.log(email+'....'+password);
         firebase.auth().signInWithEmailAndPassword(email, password )
         .then(user => { dispatch ({type: LOGIN_USER_SUCCESS, payload: user }).then(Actions.Home())})
         .catch((error) => {
             dispatch ({type: LOGIN_USER_FAIL, payload: error });
         });
-        
+        db.insert([{ 'username': email, 'password': password, 'signedIn': true }], function (err, newDocs) {
+            console.log(newDocs);
+            // Two documents were inserted in the database
+        });
     };
     
 };
+var Datastore = require('react-native-local-mongodb'),
+        db = new Datastore({ filename: 'authentication', autoload: true });
 
 export const logOut = () => {
     return(dispatch) => {
@@ -39,8 +45,13 @@ export const logOut = () => {
         .catch((error)=>{
             dispatch ({type: LOGIN_USER_FAIL, payload: error });
         });
-        
+                        db.update({'signedIn': true },{$set:{'signedIn': false}},{ multi: true }, function (err, numRemoved) {
+                            console.log(numRemoved);
+                            // Two documents were inserted in the database
+                        });
     };
+
+    
 };
     
 
