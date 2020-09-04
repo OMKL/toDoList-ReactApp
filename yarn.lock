@@ -3744,9 +3744,9 @@ lodash.isequal@4.5.0:
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
 lodash.merge@^4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
-  integrity sha512-AOYza4+Hf5z1/0Hztxpm2/xiPZgi/cjMqdnKTUWTBSKchJlxXXuUSxCCl8rJlf4g6yww/j6mA8nC8Hw/EZWxKQ==
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
+  integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
 lodash.pad@^4.1.0:
   version "4.5.1"
@@ -5027,6 +5027,13 @@ react-native-elements@^1.0.0:
     prop-types "^15.5.8"
     react-native-ratings "^6.3.0"
     react-native-status-bar-height "^2.2.0"
+
+react-native-modal-selector@^1.0.3:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-modal-selector/-/react-native-modal-selector-1.1.5.tgz#17fed51943f5025875c0af8f2bd2cbbfcbb3fd6e"
+  integrity sha512-4qjMDSHCoWJSSxCsiNvKQiAH0LMg5ef/dijmlac7km+UzMeAzD6GIub9Xa1vSoQojRkF7NEz5ug+g8giOxDIaA==
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-ratings@^6.3.0:
   version "6.3.0"
